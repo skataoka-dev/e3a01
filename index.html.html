@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卒業研究発表特設サイト</title>
+    <!-- Tailwind CSS (Styling) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons (Web page icons) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Zen Kaku Gothic New', 'Space Grotesk', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+        }
+
+        /* カスタムスクロールバー */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6;
+        }
+
+        /* グラデーションテキスト */
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* カードのホバー効果 */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(96, 165, 250, 0.5);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- ナビゲーションバー -->
+    <header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-blue-500/20">
+                    S
+                </div>
+                <div>
+                    <span class="text-xs text-blue-400 block tracking-widest uppercase font-semibold">Graduation Research</span>
+                    <span class="text-sm font-bold tracking-tight text-white" id="nav-school-name">読み込み中...</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-blue-400 transition-colors">研究概要</a>
+                <a href="#chapters" class="hover:text-blue-400 transition-colors">研究内容</a>
+                <a href="#gallery" class="hover:text-blue-400 transition-colors">ギャラリー</a>
+                <a href="#members" class="hover:text-blue-400 transition-colors">研究メンバー</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-slate-400 hover:text-white focus:outline-none">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        <!-- モバイルメニュー -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-950 border-b border-slate-800 px-4 pt-2 pb-4 space-y-2">
+            <a href="#about" class="block py-2 text-slate-300 hover:text-white">研究概要</a>
+            <a href="#chapters" class="block py-2 text-slate-300 hover:text-white">研究内容</a>
+            <a href="#gallery" class="block py-2 text-slate-300 hover:text-white">ギャラリー</a>
+            <a href="#members" class="block py-2 text-slate-300 hover:text-white">研究メンバー</a>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="relative overflow-hidden py-20 sm:py-32 border-b border-slate-900 bg-radial from-slate-900 to-slate-950">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 text-blue-400 px-4 py-1.5 rounded-full text-xs font-semibold mb-6 tracking-wide">
+                <i data-lucide="award" class="w-4 h-4"></i>
+                <span id="hero-tag">2026年度 卒業研究発表</span>
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                <span class="block text-slate-400 text-2xl sm:text-3xl font-medium mb-3" id="hero-subtitle">サブタイトル</span>
+                <span class="gradient-text font-black" id="hero-title">研究テーマ読み込み中...</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-400 mb-10 leading-relaxed" id="hero-desc">
+                研究プロトタイプ、詳細データ、および活動記録をまとめたポートフォリオサイトです。
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#chapters" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-semibold rounded-xl shadow-lg shadow-indigo-500/20 transition-all text-center flex items-center justify-center gap-2">
+                    研究を読む
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <a href="#about" class="w-full sm:w-auto px-8 py-3.5 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white font-semibold rounded-xl border border-slate-800 transition-all text-center">
+                    概要を見る
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- メインコンテンツ -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24 flex-grow">
+
+        <!-- セクション：研究概要 -->
+        <section id="about" class="scroll-mt-20">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+                <div class="lg:col-span-1">
+                    <div class="sticky top-24">
+                        <span class="text-xs font-bold uppercase tracking-widest text-blue-500">Overview</span>
+                        <h2 class="text-3xl font-bold text-white mt-2 mb-4">研究概要</h2>
+                        <div class="h-1 w-12 bg-blue-500 rounded-full mb-6"></div>
+                        <p class="text-slate-400 leading-relaxed" id="about-intro-text">
+                            私たちが本研究に着手した背景、目的、および期待される効果の全体像です。
+                        </p>
+                    </div>
+                </div>
+                <div class="lg:col-span-2 space-y-6" id="about-cards-container">
+                    <!-- JSで動的に追加されます -->
+                </div>
+            </div>
+        </section>
+
+        <!-- セクション：研究章立て (追記しやすいアコーディオン・リスト型) -->
+        <section id="chapters" class="scroll-mt-20">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-indigo-400">Core Content</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">研究内容の詳細</h2>
+                <div class="h-1 w-12 bg-indigo-500 rounded-full mx-auto mb-6"></div>
+                <p class="text-slate-400">
+                    本研究の核となるプロセスを各章ごとにまとめています。追加・修正はコード最上部の配列にデータを追加するだけで即座に反映されます。
+                </p>
+            </div>
+
+            <div class="space-y-6 max-w-4xl mx-auto" id="chapters-container">
+                <!-- JSで動的に追加されます -->
+            </div>
+        </section>
+
+        <!-- セクション：ギャラリー (画像生成AIサンプル付) -->
+        <section id="gallery" class="scroll-mt-20">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-pink-400">Visuals</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">ギャラリー ＆ イメージ図</h2>
+                <div class="h-1 w-12 bg-pink-500 rounded-full mx-auto mb-6"></div>
+                <p class="text-slate-400">
+                    研究に関連するイメージやプロトタイプの図です。
+                </p>
+            </div>
+
+            <!-- 画像生成エリア -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 bg-pink-500/10 text-pink-400 px-3 py-1 rounded-full text-xs font-semibold mb-4">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                            <span>AIによるイメージ生成</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">研究テーマを可視化する</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            このサイトでは、Gemini APIの最先端画像生成モデル <strong>imagen-4.0-generate-001</strong> を使用して、研究を表現する独自の概念図をリアルタイムで生成・表示できます。
+                        </p>
+                        <div class="space-y-3">
+                            <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider">生成プロンプト（英語入力推奨）</label>
+                            <textarea id="prompt-input" class="w-full bg-slate-900/50 border border-slate-800 focus:border-pink-500 focus:ring-1 focus:ring-pink-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-all resize-none" rows="3">A modern futuristic scientific lab workspace with holographic data screens showing neural networks and clean geometric UI elements, aesthetic dark blue tech palette, 8k resolution, photorealistic.</textarea>
+                            <button id="generate-btn" class="w-full py-3 bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white font-semibold rounded-xl shadow-lg shadow-pink-500/20 transition-all flex items-center justify-center gap-2">
+                                <i data-lucide="image" class="w-4 h-4"></i>
+                                <span>イメージ画像を生成する</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center justify-center">
+                        <div class="relative w-full aspect-square max-w-[340px] bg-slate-950 rounded-xl border border-slate-800 overflow-hidden group flex items-center justify-center shadow-inner">
+                            <!-- ローディング -->
+                            <div id="image-loader" class="hidden absolute inset-0 bg-slate-950/80 backdrop-blur-sm flex flex-col items-center justify-center z-10">
+                                <div class="animate-spin rounded-full h-12 w-12 border-4 border-pink-500 border-t-transparent mb-3"></div>
+                                <span class="text-xs text-pink-400 font-bold">AIが画像を構築中...</span>
+                            </div>
+                            <!-- 画像本体 -->
+                            <img id="generated-image" src="" alt="Generated Visual" class="hidden w-full h-full object-cover">
+                            <!-- 初期プレースホルダー -->
+                            <div id="image-placeholder" class="text-center p-6 text-slate-500 flex flex-col items-center">
+                                <i data-lucide="image" class="w-12 h-12 mb-3 text-slate-600"></i>
+                                <p class="text-sm font-semibold text-slate-400">画像が未生成です</p>
+                                <p class="text-xs mt-1">「生成する」ボタンをクリックしてください</p>
+                            </div>
+                        </div>
+                        <div id="image-status-text" class="text-center mt-3 text-xs text-slate-500">
+                            ※ Canvas環境内では nano-banana (gemini-2.5-flash-image-preview) への自動フォールバックが機能します
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- セクション：研究メンバー -->
+        <section id="members" class="scroll-mt-20">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Team</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">研究メンバー ＆ 謝辞</h2>
+                <div class="h-1 w-12 bg-emerald-500 rounded-full mx-auto mb-6"></div>
+                <p class="text-slate-400">
+                    本研究を遂行したメンバー、指導教員、ならびにご協力いただいた皆様のご紹介です。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="members-container">
+                <!-- JSで動的に追加されます -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-white block mb-1" id="footer-title">研究テーマ</span>
+                    <span class="text-xs text-slate-500 block" id="footer-school-year">高校 卒業研究</span>
+                </div>
+                <div class="text-xs text-slate-500">
+                    &copy; 2026 Graduation Research Portal. Built for high school graduation presentation.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 通知システム用のコンテナ -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2"></div>
+
+    <script>
+        // ==========================================
+        // ★【追記・編集エリア】ここを編集するだけでサイト全体が更新されます ★
+        // ==========================================
+        const RESEARCH_DATA = {
+            // 基本情報
+            schoolName: "未来創生高等学校 理数科",
+            year: "2026年度 卒業研究発表",
+            title: "分散型自律IoTデバイスにおけるエッジAI推論の最適化",
+            subtitle: "〜 低消費電力デバイスにおけるリアルタイム環境予測の実現 〜",
+            description: "近年、スマート農業や災害予測において多数のセンサーを活用するIoTシステムが不可欠となっています。本研究では、非常に計算資源が限られた安価なマイコン（エッジデバイス）上で、軽量化された機械学習モデル（エッジAI）を高速かつ極めて低い消費電力で稼働させるためのアルゴリズム最適化と、プロトタイプの開発を行いました。",
+            
+            // 研究概要（3枚のカード）
+            overview: [
+                {
+                    icon: "target",
+                    title: "解決したい課題",
+                    desc: "従来のIoTシステムでは全てのデータをクラウドに送るため、通信量、通信遅延、バッテリー消耗が大きな課題でした。"
+                },
+                {
+                    icon: "zap",
+                    title: "提案する手法",
+                    desc: "デバイス側でデータを前処理し、独自に量子化した極小のニューラルネットワークを用いてその場で推論を行う仕組みを開発しました。"
+                },
+                {
+                    icon: "trending-up",
+                    title: "得られた研究成果",
+                    desc: "通信量を従来比で約92%削減し、コイン電池1個で約3ヶ月間連続してエッジ側での環境検知を維持することに成功しました。"
+                }
+            ],
+
+            // 研究の章立て（何章でも簡単に追加可能）
+            chapters: [
+                {
+                    num: "01",
+                    title: "はじめに（背景と目的）",
+                    subtitle: "Introduction & Background",
+                    content: "地球温暖化に伴う局地的な集中豪雨や農作物の温度管理など、より精密なリアルタイム環境モニタリングが求められています。しかし、山間部や田畑に設置するデバイスは電源供給や安定した通信路の確保が難しく、従来の「常時送信型」のシステムでは実用化に限界がありました。そこで、デバイス自身に判断能力を持たせる『エッジAI』に注目しました。",
+                    highlights: ["急増する局地的環境データの収集ニーズ", "通信電力・通信遅延・通信インフラ依存という3大ボトルネック", "超低消費電力マイコンでのエッジAI化というアプローチ"]
+                },
+                {
+                    num: "02",
+                    title: "開発したアルゴリズムとモデル軽量化",
+                    subtitle: "Optimization Methodology",
+                    content: "マイコン（ESP32およびRaspberry Pi Pico等）はメモリ（SRAM）が数百KBと非常に限られているため、通常のニューラルネットワークはそのまま動作しません。本研究では「モデル剪定（Pruning）」と「8ビット整数量子化（Quantization）」を適用し、予測精度を95%以上に維持したまま、ファイルサイズを本来の1/12まで削減する手法を考案しました。",
+                    highlights: ["推論精度の低下を1.2%未満に抑える量子化手法", "余剰パラメータをカットする動的モデル剪定", "C言語によるマイコン向け超軽量推論エンジンの実装"]
+                },
+                {
+                    num: "03",
+                    title: "ハードウェア実証実験と測定評価",
+                    subtitle: "Hardware Experiments & Results",
+                    content: "実際に気圧・温度・湿度を測定する物理モジュールを作成し、実地テストを行いました。従来の全データをWi-Fiで送信するシステムと、本提案の『自律型エッジAI検知』を比較した結果、消費電力が飛躍的に削減され、異常を検知した緊急時のみ通信を行うためバッテリーライフが大きく伸びることが確認されました。",
+                    highlights: ["実機ハードウェアプロトタイプの開発", "消費電流の測定：平均約8.4mA（従来比約1/8）", "通信トリガーの自動調整による超低電力待機状態の設計"]
+                },
+                {
+                    num: "04",
+                    title: "今後の展望と実用化への課題",
+                    subtitle: "Discussion & Future Work",
+                    content: "現段階では静的な環境の予測にとどまっているため、今後は『強化学習』の概念を簡易的に取り入れ、設置された周囲の環境傾向をデバイス自身が稼働しながら学習（自己アップデート）していく『オンデバイス学習』の実装を目指します。さらに、複数台のデバイスが互いに推論結果を無線メッシュネットワークで共有し合う、自律分散型のシステム開発を進めていきます。",
+                    highlights: ["オンデバイスでの適応型ファインチューニング", "省電力無線通信規格（LoRa）によるメッシュ連携", "スマート農業への実践的フィールドワークの展開"]
+                }
+            ],
+
+            // メンバー紹介（ここに追加メンバーをオブジェクトとして並べるだけ）
+            members: [
+                {
+                    role: "研究リーダー",
+                    name: "佐藤 陽斗 (Sato Haruto)",
+                    bio: "プログラミングおよび組み込み機器の実装全般を担当。将来はロボティクス工学を学ぶため大学へ進学予定。",
+                    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop"
+                },
+                {
+                    role: "データ分析・検証",
+                    name: "鈴木 美咲 (Suzuki Misaki)",
+                    bio: "センサーデータの収集、機械学習モデルの訓練、および実証実験のデータ統計評価を担当。趣味は電子工作。",
+                    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=256&auto=format&fit=crop"
+                },
+                {
+                    role: "ハードウェア設計",
+                    name: "高橋 蓮 (Takahashi Ren)",
+                    bio: "3Dプリンタを用いたデバイス筐体設計や回路配線、電源モジュールの回路設計を担当。ハードウェアに強い情熱を持つ。",
+                    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=256&auto=format&fit=crop"
+                }
+            ]
+        };
+
+        // ==========================================
+        // システム初期化とUI構築処理
+        // ==========================================
+        document.addEventListener("DOMContentLoaded", () => {
+            initDataRendering();
+            setupInteractions();
+            lucide.createIcons();
+        });
+
+        // データのレンダリング
+        function initDataRendering() {
+            // 基本情報の埋め込み
+            document.getElementById("nav-school-name").textContent = RESEARCH_DATA.schoolName;
+            document.getElementById("hero-tag").innerHTML = `<i data-lucide="award" class="w-4 h-4 mr-1"></i> ${RESEARCH_DATA.year}`;
+            document.getElementById("hero-title").textContent = RESEARCH_DATA.title;
+            document.getElementById("hero-subtitle").textContent = RESEARCH_DATA.subtitle;
+            document.getElementById("hero-desc").textContent = RESEARCH_DATA.description;
+            document.getElementById("footer-title").textContent = RESEARCH_DATA.title;
+            document.getElementById("footer-school-year").textContent = `${RESEARCH_DATA.schoolName} / ${RESEARCH_DATA.year}`;
+
+            // 研究概要（3枚のカード）
+            const overviewContainer = document.getElementById("about-cards-container");
+            overviewContainer.innerHTML = RESEARCH_DATA.overview.map((card, idx) => `
+                <div class="glass-card p-6 sm:p-8 rounded-2xl flex items-start gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400">
+                        <i data-lucide="${card.icon}" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white mb-2">${card.title}</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">${card.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            // 研究の章立て（アコーディオン）
+            const chaptersContainer = document.getElementById("chapters-container");
+            chaptersContainer.innerHTML = RESEARCH_DATA.chapters.map((chapter, idx) => `
+                <div class="glass-card rounded-2xl overflow-hidden border border-slate-800">
+                    <!-- アコーディオンヘッダー -->
+                    <button class="w-full text-left p-6 sm:p-8 flex justify-between items-center hover:bg-slate-900/30 transition-all focus:outline-none focus:bg-slate-900/40" onclick="toggleAccordion('chapter-${idx}')">
+                        <div class="flex items-center gap-4 sm:gap-6">
+                            <span class="text-3xl sm:text-4xl font-extrabold text-blue-500/30 font-mono tracking-tight">${chapter.num}</span>
+                            <div>
+                                <span class="text-xs font-semibold text-blue-400 uppercase tracking-widest block mb-0.5">${chapter.subtitle}</span>
+                                <h3 class="text-lg sm:text-xl font-bold text-white leading-tight">${chapter.title}</h3>
+                            </div>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 transition-transform duration-300" id="accordion-icon-chapter-${idx}">
+                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                        </div>
+                    </button>
+                    <!-- アコーディオンコンテンツ -->
+                    <div id="accordion-content-chapter-${idx}" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-6 sm:p-8 pt-0 border-t border-slate-900/50 bg-slate-950/40 space-y-6">
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed whitespace-pre-line">
+                                ${chapter.content}
+                            </p>
+                            <div class="bg-slate-900/30 border border-slate-800/50 rounded-xl p-4 sm:p-6">
+                                <span class="text-xs font-bold text-slate-400 tracking-wider block mb-3 uppercase">主なアプローチ・ポイント</span>
+                                <ul class="space-y-2 text-sm text-slate-400">
+                                    ${chapter.highlights.map(hl => `
+                                        <li class="flex items-start gap-2.5">
+                                            <i data-lucide="check-circle" class="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0"></i>
+                                            <span>${hl}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // メンバーリストのレンダリング
+            const membersContainer = document.getElementById("members-container");
+            membersContainer.innerHTML = RESEARCH_DATA.members.map(member => `
+                <div class="glass-card rounded-2xl p-6 text-center flex flex-col items-center">
+                    <img class="w-24 h-24 rounded-full object-cover border-2 border-emerald-500/20 mb-4" src="${member.avatar}" alt="${member.name}">
+                    <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full mb-3">${member.role}</span>
+                    <h3 class="text-lg font-bold text-white mb-2">${member.name}</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed max-w-xs">${member.bio}</p>
+                </div>
+            `).join('');
+        }
+
+        // アコーディオンの開閉処理
+        window.toggleAccordion = function(id) {
+            const content = document.getElementById(`accordion-content-${id}`);
+            const icon = document.getElementById(`accordion-icon-${id}`);
+            
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                content.style.maxHeight = '0px';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // 他のすべてのアコーディオンを閉じる
+                document.querySelectorAll('[id^="accordion-content-"]').forEach(el => {
+                    el.style.maxHeight = '0px';
+                });
+                document.querySelectorAll('[id^="accordion-icon-"]').forEach(el => {
+                    el.style.transform = 'rotate(0deg)';
+                });
+                
+                // クリックされたものを開く
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        };
+
+        // インタラクション＆イベント設定
+        function setupInteractions() {
+            // モバイルメニューのトグル
+            const menuToggle = document.getElementById("menu-toggle");
+            const mobileMenu = document.getElementById("mobile-menu");
+            menuToggle.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+            });
+
+            // スムーズスクロール
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        mobileMenu.classList.add("hidden"); // メニューが開いていれば閉じる
+                    }
+                });
+            });
+
+            // 画像生成処理
+            const generateBtn = document.getElementById("generate-btn");
+            const promptInput = document.getElementById("prompt-input");
+            const generatedImage = document.getElementById("generated-image");
+            const imagePlaceholder = document.getElementById("image-placeholder");
+            const imageLoader = document.getElementById("image-loader");
+
+            generateBtn.addEventListener("click", async () => {
+                const prompt = promptInput.value.trim();
+                if (!prompt) {
+                    showToast("プロンプトを入力してください。", "error");
+                    return;
+                }
+
+                // UIのローディング表示
+                imageLoader.classList.remove("hidden");
+                imagePlaceholder.classList.add("hidden");
+                generatedImage.classList.add("hidden");
+                generateBtn.disabled = true;
+                generateBtn.classList.add("opacity-50");
+
+                try {
+                    // APIキーは空で環境から注入
+                    const apiKey = "";
+                    // Canvas環境向けのフォールバックモデルを使用
+                    const url = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
+                    
+                    const response = await fetchWithRetry(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            instances: { prompt: prompt },
+                            parameters: { sampleCount: 1 }
+                        })
+                    });
+
+                    const result = await response.json();
+                    
+                    if (result.predictions && result.predictions[0]?.bytesBase64Encoded) {
+                        const base64Data = result.predictions[0].bytesBase64Encoded;
+                        generatedImage.src = `data:image/png;base64,${base64Data}`;
+                        generatedImage.classList.remove("hidden");
+                        showToast("画像を生成しました！", "success");
+                    } else {
+                        throw new Error("画像データの取得に失敗しました。");
+                    }
+                } catch (error) {
+                    console.error("Image generation error:", error);
+                    showToast("画像の生成に失敗しました。時間をおいて再試行してください。", "error");
+                    imagePlaceholder.classList.remove("hidden");
+                } finally {
+                    imageLoader.classList.add("hidden");
+                    generateBtn.disabled = false;
+                    generateBtn.classList.remove("opacity-50");
+                }
+            });
+        }
+
+        // 指数バックオフ付きフェッチ（API呼び出し信頼性の向上）
+        async function fetchWithRetry(url, options, retries = 5, delay = 1000) {
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response;
+            } catch (error) {
+                if (retries > 0) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return fetchWithRetry(url, options, retries - 1, delay * 2);
+                } else {
+                    throw error;
+                }
+            }
+        }
+
+        // トースト通知（簡易UIメッセージ）
+        function showToast(message, type = "success") {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = `p-4 rounded-xl shadow-lg border text-sm font-semibold transition-all duration-300 transform translate-y-2 opacity-0 flex items-center gap-2 ${
+                type === "success" 
+                ? "bg-slate-900 border-emerald-500/30 text-emerald-400" 
+                : "bg-slate-900 border-rose-500/30 text-rose-400"
+            }`;
+            
+            const icon = type === "success" ? "check-circle" : "alert-circle";
+            toast.innerHTML = `
+                <i data-lucide="${icon}" class="w-4 h-4"></i>
+                <span>${message}</span>
+            `;
+            
+            container.appendChild(toast);
+            lucide.createIcons();
+
+            // フェードイン
+            setTimeout(() => {
+                toast.classList.remove("translate-y-2", "opacity-0");
+            }, 10);
+
+            // 4秒後に削除
+            setTimeout(() => {
+                toast.classList.add("translate-y-2", "opacity-0");
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
